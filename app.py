@@ -5,6 +5,7 @@ import logging
 
 import tornado.ioloop
 import tornado.options
+import tornado.httpserver
 import tornado.web
 from tornado.web import asynchronous
 from tornado import gen
@@ -27,19 +28,21 @@ class BaseHandler(tornado.web.RequestHandler):
 
 
 
-class MainHandler(BaseHandler):
+class LandingHandler(BaseHandler):
     def get(self):
         self.render("main.html")
 
 
-class TutorialHandler(BaseHandler):
-    @asynchronous
-    def get(self):
-        self.db.execute('SELECT 1;', callback=self._done)
+class PaymentHandler(BaseHandler):
+    def post(self):
+        pass
 
-    def _done(self, cursor, error):
-        self.write('Results: %r' % (cursor.fetchall(),))
-        self.finish()
+class ApiHandler(BaseHandler):
+    def get(self):
+        pass
+
+    def post(self):
+        pass
 
 
 class FourOhFourHandler(BaseHandler):
@@ -63,11 +66,11 @@ class Application(tornado.web.Application):
             debug=True,
         )
 
-        application.db = momoko.Pool(
-            dsn='dbname=your_db user=your_user password=very_secret_password '
-                'host=localhost port=5432',
-            size=1
-        )
+        #application.db = momoko.Pool(
+        #    dsn='dbname=your_db user=your_user password=very_secret_password '
+        #        'host=localhost port=5432',
+        #    size=1
+        #)
 
         tornado.web.Application.__init__(self, handlers, **settings)
 
