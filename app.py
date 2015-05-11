@@ -69,7 +69,7 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
            (r"/", LandingHandler),
-           (r"/", ApiHandler),
+           (r"/api", ApiHandler),
            (r"/([^/]+)", FourOhFourHandler),
         ]
         settings = dict(
