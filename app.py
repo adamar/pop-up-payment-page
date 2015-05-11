@@ -11,6 +11,7 @@ from tornado.web import asynchronous
 from tornado import gen
 from tornado.options import define, options
 
+from tornado_stripe import Stripe
 
 #import psycopg2
 #import momoko
@@ -81,6 +82,7 @@ class Application(tornado.web.Application):
 
 def main():
     tornado.options.parse_command_line()
+    stripe = Stripe(options.stripe_private_key, blocking=True)
     print "Server listening on port " + str(options.port)
     logging.getLogger().setLevel(logging.DEBUG)
     http_server = tornado.httpserver.HTTPServer(Application())
