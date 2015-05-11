@@ -9,5 +9,13 @@
   "success_url": "/",
   "env": {
     "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-python"
+    "STRIPE_PUBLISHABLE_KEY": {
+      "description": "Your Stripe public key",
+      "value": ""
+    },
+    "STRIPE_SECRET_KEY": {
+      "description": "Your Stripe private key",
+      "value": ""
+    }
   }
 }
