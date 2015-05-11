@@ -20,6 +20,9 @@ define("environment", default="development", help="Pick you environment", type=s
 define("site_title", default="Tornado Example", help="Site Title", type=str)
 define("cookie_secret", default="sooooooosecret", help="Your secret cookie dough", type=str)
 define("port", default="8000", help="Listening port", type=str)
+define("stripe_publishable_key", default="Your Stripe public key", help="", type=str)
+define("stripe_private_key", default="Your Stripe private key", help="", type=str)
+
 
 class BaseHandler(tornado.web.RequestHandler):
     @property
@@ -59,6 +62,7 @@ class Application(tornado.web.Application):
         ]
         settings = dict(
             site_title=options.site_title,
+            stripe_publishable_key=options.stripe_publishable_key,
             cookie_secret=options.cookie_secret,
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
             static_path=os.path.join(os.path.dirname(__file__), "static"),
