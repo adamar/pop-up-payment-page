@@ -24,7 +24,9 @@ define("port", default="8000", help="Listening port", type=str)
 define("stripe_publishable_key", default="Your Stripe public key", help="", type=str)
 define("stripe_private_key", default="Your Stripe private key", help="", type=str)
 
-
+tornado.options.parse_command_line()
+stripe = Stripe(options.stripe_private_key, blocking=False)
+ 
 
 class BaseHandler(tornado.web.RequestHandler):
     @property
@@ -49,7 +51,7 @@ class PaymentHandler(BaseHandler):
                     'plan':   'test-plan',
                     'email':  'johndoe@example.com'
                     }
-            stripe.customers.post(**self.PLAN)
+            #stripe.customers.post(**self.PLAN)
 
 
 class ApiHandler(BaseHandler):
@@ -92,8 +94,6 @@ class Application(tornado.web.Application):
 
 
 def main():
-    tornado.options.parse_command_line()
-    stripe = Stripe(options.stripe_private_key, blocking=True)
     print "Server listening on port " + str(options.port)
     logging.getLogger().setLevel(logging.DEBUG)
     http_server = tornado.httpserver.HTTPServer(Application())
