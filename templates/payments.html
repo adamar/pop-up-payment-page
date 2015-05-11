@@ -12,7 +12,7 @@
   <!-- New section -->
   <script type="text/javascript">
     <!-- Fill in your publishable key -->
-    Stripe.setPublishableKey('pk_test_Wb5JYdQrGaddNRwsazv5lfQs');
+    Stripe.setPublishableKey('{{ handler.settings["stripe_publishable_key"] }}');
 
    var stripeResponseHandler = function(status, response) {
      var $form = $('#payment-form');
