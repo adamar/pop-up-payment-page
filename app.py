@@ -25,11 +25,11 @@ define("stripe_publishable_key", default="Your Stripe public key", help="", type
 define("stripe_private_key", default="Your Stripe private key", help="", type=str)
 
 
+
 class BaseHandler(tornado.web.RequestHandler):
     @property
     def db(self):
         return self.application.db
-
 
 
 class LandingHandler(BaseHandler):
@@ -38,8 +38,19 @@ class LandingHandler(BaseHandler):
 
 
 class PaymentHandler(BaseHandler):
+    def get(self):
+        self.render("index.html")
+
     def post(self):
-        pass
+        self.token = self.get_argument('stripeToken', False)
+        if self.token:
+            self.PLAN = {
+                    'source': self.token,
+                    'plan':   'test-plan',
+                    'email':  'johndoe@example.com'
+                    }
+            stripe.customers.post(**self.PLAN)
+
 
 class ApiHandler(BaseHandler):
     def get(self):
