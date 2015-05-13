@@ -1,0 +1,19 @@
+{
+    "plans":[
+        {
+         "name":"test_silver",
+         "display_name":"Silver",
+         "amount":30
+        },
+        {
+         "name":"test_gold",
+         "display_name":"Gold",
+         "amount":50
+        },
+        {
+         "name":"test_diamond",
+         "display_name":"Diamond",
+         "amount":100
+        }
+    ]
+}

@@ -2,6 +2,7 @@
 
 import os
 import logging
+import json
 
 import tornado.ioloop
 import tornado.options
@@ -26,6 +27,13 @@ define("stripe_private_key", default="Your Stripe private key", help="", type=st
 
 tornado.options.parse_command_line()
 stripe = Stripe(options.stripe_private_key, blocking=False)
+
+
+# Load plans from JSON file, move to DB
+stripe_plans  = json.load(open('plans.json', 'rb'))
+
+
+
  
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -77,6 +85,7 @@ class Application(tornado.web.Application):
         settings = dict(
             site_title=options.site_title,
             stripe_publishable_key=options.stripe_publishable_key,
+            plans=stripe_plans
             cookie_secret=options.cookie_secret,
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
             static_path=os.path.join(os.path.dirname(__file__), "static"),
