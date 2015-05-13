@@ -337,7 +337,7 @@
                                     <li>No Bonus Points</li>
                                     <li>No Bonus Points</li>
                                     <li>No Bonus Points</li>
-                                    <li><a href="#">sign up</a></li>
+                                    <li><a href="#ccModal" data-toggle="modal">sign up</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -350,6 +350,119 @@
 				</div>
 			</section>
 			<!-- end Price section -->
+
+            <!-- Modal section -->
+
+<div class="modal fade" id="ccModal" tabindex="-1" role="dialog" aria-labelledby="ccModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="row text-center">
+
+
+                <div class="col-xs-1 col-md-12">
+                <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Payment Details</h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form" id="payment-form">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">CARD NAME</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="cardName" placeholder="Valid Name" required autofocus data-stripe="name" />
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+ 
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">CARD NUMBER</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number" />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="expMonth">EXPIRATION DATE</label>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" name="expMonth" placeholder="MM" required data-stripe="exp_month" />
+                                    </div>
+                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                        <input type="text" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cvCode">CV CODE</label>
+                                    <input type="password" class="form-control" name="cvCode" placeholder="CV" required data-stripe="cvc" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="couponCode">COUPON CODE</label>
+                                    <input type="text" class="form-control" name="couponCode" />
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="btn btn-success btn-lg btn-block" type="submit">Start Subscription</button>
+                            </div>
+                        </div>
+                        <div class="row" style="display:none;">
+                            <div class="col-xs-12">
+                                <p class="payment-errors"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+         </div>
+            
+                    <!--
+                    <form class="col-md-10 col-md-offset-1" style="padding:0">
+                        <div class="form-group col-md-12">
+                            <input type="text" class="form-control" id="signupEmail1" placeholder="Card Number" contenteditable="false">
+                        </div>
+                      <p>Expiration</p>
+                        <div class="form-group col-md-6">                            
+                            <input type="text" class="form-control" id="signupPassword" placeholder="Month" contenteditable="false">
+                        </div>
+                        <div class="form-group col-md-6">                            
+                            <input type="text" class="form-control" id="signupPassword" placeholder="Year" contenteditable="false">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <input type="text" class="form-control" id="access-code" placeholder="Premier Access Code">
+                        </div>
+                      <div class="clearfix"></div>
+                    </form>
+                    -->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- end Modal section -->
+
+
 			
 			<!-- Social section -->
 			<section id="social" class="parallax">
