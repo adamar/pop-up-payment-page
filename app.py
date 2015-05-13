@@ -46,11 +46,6 @@ class LandingHandler(BaseHandler):
     def get(self):
         self.render("main.html")
 
-
-class PaymentHandler(BaseHandler):
-    def get(self):
-        self.render("index.html")
-
     def post(self):
         self.token = self.get_argument('stripeToken', False)
         if self.token:
@@ -59,7 +54,8 @@ class PaymentHandler(BaseHandler):
                     'plan':   'test-plan',
                     'email':  'johndoe@example.com'
                     }
-            #stripe.customers.post(**self.PLAN)
+            stripe.customers.post(**self.PLAN)
+
 
 
 class ApiHandler(BaseHandler):
