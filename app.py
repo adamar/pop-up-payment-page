@@ -85,7 +85,7 @@ class Application(tornado.web.Application):
         settings = dict(
             site_title=options.site_title,
             stripe_publishable_key=options.stripe_publishable_key,
-            plans=stripe_plans
+            plans=stripe_plans,
             cookie_secret=options.cookie_secret,
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
             static_path=os.path.join(os.path.dirname(__file__), "static"),
