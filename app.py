@@ -49,11 +49,13 @@ class LandingHandler(BaseHandler):
     def post(self):
         self.token = self.get_argument('stripeToken', False)
         self.plan = self.get_argument('planId', False)
+        self.email = self.get_argument('email', False)
+ 
         if self.token:
             self.PLAN = {
                     'source': self.token,
-                    'plan':   'test-plan',
-                    'email':  'johndoe@example.com'
+                    'plan':   self.plan,
+                    'email':  self.email
                     }
             self.result = stripe.customers.post(**self.PLAN)
         self.redirect("/thank-you")
