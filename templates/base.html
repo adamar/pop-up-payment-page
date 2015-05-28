@@ -205,6 +205,16 @@
    });
    </script>
 
+   <script type="text/javascript">
+     $(document).on("click", ".plans", function () {
+        var planId = $(this).data('id');
+        console.log(planId);
+        $(".modal-body #payment-title").text(planId);
+        $('#payment-form').append($('<input type="hidden" name="planId" />').val(planId));
+     });
+   </script>
+
+
 
 
         {% block bottom %}{% end %}

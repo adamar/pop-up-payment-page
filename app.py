@@ -48,7 +48,7 @@ class LandingHandler(BaseHandler):
 
     def post(self):
         self.token = self.get_argument('stripeToken', False)
-        print self.token
+        self.plan = self.get_argument('planId', False)
         if self.token:
             self.PLAN = {
                     'source': self.token,
