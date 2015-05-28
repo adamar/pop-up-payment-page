@@ -55,8 +55,13 @@ class LandingHandler(BaseHandler):
                     'plan':   'test-plan',
                     'email':  'johndoe@example.com'
                     }
-            stripe.customers.post(**self.PLAN)
+            self.result = stripe.customers.post(**self.PLAN)
+        self.redirect("/thank-you")
 
+
+class ThankyouHandler(BaseHandler):
+    def get(self):
+        self.render("thank-you.html")
 
 
 class ApiHandler(BaseHandler):
@@ -77,6 +82,7 @@ class Application(tornado.web.Application):
         handlers = [
            (r"/", LandingHandler),
            (r"/api", ApiHandler),
+           (r"/thank-you", ThankyouHandler),
            (r"/([^/]+)", FourOhFourHandler),
         ]
         settings = dict(
