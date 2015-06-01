@@ -46,6 +46,7 @@ class LandingHandler(BaseHandler):
     def get(self):
         self.render("main.html")
 
+    @gen.coroutine
     def post(self):
         self.token = self.get_argument('stripeToken', False)
         self.plan = self.get_argument('planId', False)
@@ -56,9 +57,9 @@ class LandingHandler(BaseHandler):
                     'source': self.token,
                     'plan':   self.plan,
                     'email':  self.email
-                    }
-            self.result = stripe.customers.post(**self.PLAN)
-        self.redirect("/thank-you")
+                   }
+            resp = yield stripe.customers.post(**self.PLAN)
+            self.redirect("/thank-you")
 
 
 class ThankyouHandler(BaseHandler):
