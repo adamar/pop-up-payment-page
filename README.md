@@ -13,6 +13,10 @@ Its built on Tornado 4.1 and uses Twitter's Bootstrap for page layout.
 - Stripe.js payment modal
 
 
+## Plans.json
+
+This demo contains a json file which describes subscriptions plans inside Stripe. Please ensure the plans exist already in your Stripe account.
+
 
 ## Design
 
